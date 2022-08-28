@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    float velocidad = 5f;
+    float velocidad = 8f;
     bool saltando = false;
     float saltoPotencia = 500f;
     Animator animator;
@@ -50,7 +50,7 @@ public class MovimientoPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)&& !saltando)
         {
             
-            animator.SetBool("Salto", true);
+            animator.SetTrigger("Salto");
             rb2d.AddForce(Vector2.up * saltoPotencia);
             saltando = true;
         }
