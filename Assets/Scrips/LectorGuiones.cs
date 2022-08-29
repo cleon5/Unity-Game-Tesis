@@ -58,11 +58,15 @@ public class LectorGuiones : MonoBehaviour
             text = text?.Trim(); 
             dialogueBox.text = text; 
         }
+        else if (_StoryScript.currentChoices.Count > 0)
+        {
+            
+            DisplayChoices();
+        }
         else
         {
             dialogueBox.text = "Finalizado";
             canva.SetActive(false);
-            //DisplayChoices();
         }
     }
     public void DisplayChoices()

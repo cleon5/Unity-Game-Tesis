@@ -6,12 +6,15 @@ public class MovimientoPersonaje : MonoBehaviour
 {
     float velocidad = 8f;
     bool saltando = false;
-    float saltoPotencia = 500f;
+    float saltoPotencia = 550f;
+
     Animator animator;
     Rigidbody2D rb2d;
 
     Vector3 escalaPositiva;
     Vector3 escalaNegativa;
+
+    bool espera;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,12 +24,13 @@ public class MovimientoPersonaje : MonoBehaviour
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;
 
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //Movimiento Horizontal 
         if (Input.GetKey(KeyCode.A))
         {
@@ -49,48 +53,52 @@ public class MovimientoPersonaje : MonoBehaviour
         //Movimiento vertical
         if (Input.GetKey(KeyCode.Space)&& !saltando)
         {
-            
-            animator.SetTrigger("Salto");
+            animator.SetBool("Salto", true);
             rb2d.AddForce(Vector2.up * saltoPotencia);
             saltando = true;
         }
-        else
+        if(Input.GetKey(KeyCode.S) && saltando)
         {
-            
+            rb2d.AddForce(Vector2.down * 20);
         }
+
         //Ataques
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.M) && !espera)
         {
-
             animator.SetTrigger("Ataque");
-
+            RetrocesoAtaque(120f);
+            StartCoroutine(TiempoEspera(.7f));
         }
-        if (Input.GetKey(KeyCode.N))
+        if (Input.GetKey(KeyCode.N) && !espera)
         {
-
             animator.SetTrigger("Ataque2");
-
+            RetrocesoAtaque(130f);
+            StartCoroutine(TiempoEspera(1f));
         }
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKey(KeyCode.J) && !espera)
         {
-
             animator.SetTrigger("Ataque3");
-
+            RetrocesoAtaque(155f);
+            StartCoroutine(TiempoEspera(1f));
         }
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K) && !espera)
         {
-
-            animator.SetTrigger("Ataque4");
-
+            animator.SetTrigger("AtaqueR");
+            RetrocesoAtaque(-150f);
+            StartCoroutine(TiempoEspera(1f));
         }
-        if (Input.GetKey(KeyCode.L))
-        {
-
-            animator.SetTrigger("Ataque5");
-
-        }
-        
-
+    }
+    IEnumerator TiempoEspera(float Tiempo)
+    {
+        espera = true;
+        yield return new WaitForSeconds(Tiempo);
+        espera = false;
+    }
+    void RetrocesoAtaque(float potencia) {
+        if (transform.localScale.x < 0)
+            rb2d.AddForce(Vector2.right * potencia);
+        else
+            rb2d.AddForce(Vector2.left * potencia);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
