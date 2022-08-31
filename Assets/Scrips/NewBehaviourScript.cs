@@ -13,5 +13,6 @@ public class NewBehaviourScript : MonoBehaviour
             canva.SetActive(true);
             print("true");
         }
+        
     }
 }

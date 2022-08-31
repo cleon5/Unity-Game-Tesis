@@ -10,6 +10,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     Animator animator;
     Rigidbody2D rb2d;
+    
+    CircleCollider2D circleColider;
 
     Vector3 escalaPositiva;
     Vector3 escalaNegativa;
@@ -19,7 +21,10 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        circleColider = GetComponent<CircleCollider2D>();
 
+
+       
         escalaPositiva = transform.localScale;
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;

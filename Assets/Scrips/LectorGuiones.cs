@@ -29,6 +29,9 @@ public class LectorGuiones : MonoBehaviour
     {
         
         LoadStory();
+        print(gameObject.name);
+
+        
     }
 
 
@@ -67,6 +70,8 @@ public class LectorGuiones : MonoBehaviour
         {
             dialogueBox.text = "Finalizado";
             canva.SetActive(false);
+            dialogueBox.text = "....";
+            _StoryScript.ResetState();
         }
     }
     public void DisplayChoices()
