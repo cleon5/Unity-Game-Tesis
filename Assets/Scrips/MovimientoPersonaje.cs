@@ -112,5 +112,9 @@ public class MovimientoPersonaje : MonoBehaviour
             saltando = false;
             animator.SetBool("Salto", false);
         }
+        if (other.gameObject.CompareTag("Enemigo")){
+            print("dono");
+            RetrocesoAtaque(225f);
+        }
     }
 }
