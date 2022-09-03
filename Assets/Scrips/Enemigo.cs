@@ -7,16 +7,22 @@ public class Enemigo : MonoBehaviour
     private Animator animator;
     public GameObject target;
     private CircleCollider2D Ataque;
+    Rigidbody2D rb2d;
 
     float velocidad = 5f;
     bool atacando = false;
     float rango_ataque = 4f;
     float distancia = 15f;
     float diferencia;
+
+
+    public int vida = 3;
     void Start()
     {
         animator = GetComponent<Animator>();
         Ataque = GetComponent<CircleCollider2D>();
+        rb2d = GetComponent<Rigidbody2D>();
+
         Ataque.enabled = false;
     }
 
@@ -26,7 +32,7 @@ public class Enemigo : MonoBehaviour
         diferencia = Mathf.Abs(transform.position.x - target.transform.position.x);
         if (diferencia > distancia)
         {
-            print("no se deberia mover");
+            //print("no se deberia mover");
         }
 
         else if (diferencia > rango_ataque && !atacando)
@@ -51,6 +57,38 @@ public class Enemigo : MonoBehaviour
             {
                 animator.SetTrigger("Ataque");
                 Ataque.enabled = true;
+            }
+        }
+    }
+    void RetrocesoAtaque(float potencia)
+    {
+        if (transform.localScale.x < 0)
+            rb2d.AddForce(Vector2.right * potencia);
+        else
+            rb2d.AddForce(Vector2.left * potencia);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player") )
+        {
+            //RetrocesoAtaque(120f);
+            //vida--;
+            if (vida <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") )
+        {
+            print("triger");
+            RetrocesoAtaque(120f);
+            vida--;
+            if (vida <= 0)
+            {
+                Destroy(gameObject);
             }
         }
     }

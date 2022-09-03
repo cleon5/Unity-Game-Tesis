@@ -7,9 +7,11 @@ public class MovimientoPersonaje : MonoBehaviour
     float velocidad = 8f;
     bool saltando = false;
     float saltoPotencia = 550f;
+    float vida = 10;
 
     Animator animator;
     Rigidbody2D rb2d;
+    
     
     CircleCollider2D circleColider;
 
@@ -28,11 +30,11 @@ public class MovimientoPersonaje : MonoBehaviour
         escalaPositiva = transform.localScale;
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;
+        circleColider.enabled = false;
 
         
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -96,8 +98,10 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator TiempoEspera(float Tiempo)
     {
         espera = true;
+        circleColider.enabled = true;
         yield return new WaitForSeconds(Tiempo);
         espera = false;
+        circleColider.enabled = false;
     }
     void RetrocesoAtaque(float potencia) {
         if (transform.localScale.x < 0)
@@ -113,8 +117,20 @@ public class MovimientoPersonaje : MonoBehaviour
             animator.SetBool("Salto", false);
         }
         if (other.gameObject.CompareTag("Enemigo")){
-            print("dono");
-            RetrocesoAtaque(225f);
+            RetrocesoAtaque(115f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            RetrocesoAtaque(120f);
+            vida--;
+            if (vida <= 0)
+            {
+                animator.SetBool("Muerte", true);
+                Destroy(gameObject);
+            }
         }
     }
 }

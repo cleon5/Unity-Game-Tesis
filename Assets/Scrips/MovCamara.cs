@@ -7,7 +7,7 @@ public class MovCamara : MonoBehaviour
     private Vector3 posicion;
     private Vector3 pos2;
     public GameObject personaje;
-    private float desplazamientoY = 1f;
+    private float desplazamientoY = .5f;
     // Start is called before the first frame update
     void Start()
     {

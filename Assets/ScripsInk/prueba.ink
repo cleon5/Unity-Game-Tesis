@@ -1,11 +1,7 @@
-Esta es una prueba
+Primer cofre encontrado
 
-segunda linea de prueba
+Has encontrado un consejo millonario 
 
-tercera linea
+Si quieres hacer una compra lo mas recomendable es que la pagues con tarjecta de credito a meses sin intereses
 
-Deciciones
-* This is a choice that can only be chosen once
-    historia 1
-* This is a choice that can only be chosen once
-    hisyoria 2
+Esto hara que cada mes debas pagar una parte del costo del producto y evitaras desenbolsar el costo total del producto
