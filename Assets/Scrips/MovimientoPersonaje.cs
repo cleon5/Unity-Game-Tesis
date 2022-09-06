@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    float velocidad = 8f;
+    float velocidad = 5f;
     bool saltando = false;
-    float saltoPotencia = 550f;
+    float saltoPotencia = 250f;
     float vida = 10;
 
     Animator animator;
@@ -73,25 +73,25 @@ public class MovimientoPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.M) && !espera)
         {
             animator.SetTrigger("Ataque");
-            RetrocesoAtaque(120f);
+            RetrocesoAtaque(50f);
             StartCoroutine(TiempoEspera(.7f));
         }
         if (Input.GetKey(KeyCode.N) && !espera)
         {
             animator.SetTrigger("Ataque2");
-            RetrocesoAtaque(130f);
+            RetrocesoAtaque(50f);
             StartCoroutine(TiempoEspera(1f));
         }
         if (Input.GetKey(KeyCode.J) && !espera)
         {
             animator.SetTrigger("Ataque3");
-            RetrocesoAtaque(155f);
+            RetrocesoAtaque(55f);
             StartCoroutine(TiempoEspera(1f));
         }
         if (Input.GetKey(KeyCode.K) && !espera)
         {
             animator.SetTrigger("AtaqueR");
-            RetrocesoAtaque(-150f);
+            RetrocesoAtaque(-50f);
             StartCoroutine(TiempoEspera(1f));
         }
     }
@@ -117,14 +117,14 @@ public class MovimientoPersonaje : MonoBehaviour
             animator.SetBool("Salto", false);
         }
         if (other.gameObject.CompareTag("Enemigo")){
-            RetrocesoAtaque(115f);
+            RetrocesoAtaque(20f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            RetrocesoAtaque(120f);
+            RetrocesoAtaque(20f);
             vida--;
             if (vida <= 0)
             {
