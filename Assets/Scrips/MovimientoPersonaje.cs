@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    float velocidad = 5f;
+    float velocidad = 10f;
     bool saltando = false;
-    float saltoPotencia = 250f;
+    float saltoPotencia = 550f;
     float vida = 10;
 
     Animator animator;
@@ -26,13 +26,10 @@ public class MovimientoPersonaje : MonoBehaviour
         circleColider = GetComponent<CircleCollider2D>();
 
 
-       
         escalaPositiva = transform.localScale;
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;
-        circleColider.enabled = false;
-
-        
+        circleColider.enabled = false;   
     }
 
     void Update()
@@ -73,25 +70,25 @@ public class MovimientoPersonaje : MonoBehaviour
         if (Input.GetKey(KeyCode.M) && !espera)
         {
             animator.SetTrigger("Ataque");
-            RetrocesoAtaque(50f);
+            RetrocesoAtaque(250f);
             StartCoroutine(TiempoEspera(.7f));
         }
         if (Input.GetKey(KeyCode.N) && !espera)
         {
             animator.SetTrigger("Ataque2");
-            RetrocesoAtaque(50f);
+            RetrocesoAtaque(250f);
             StartCoroutine(TiempoEspera(1f));
         }
         if (Input.GetKey(KeyCode.J) && !espera)
         {
             animator.SetTrigger("Ataque3");
-            RetrocesoAtaque(55f);
+            RetrocesoAtaque(255f);
             StartCoroutine(TiempoEspera(1f));
         }
         if (Input.GetKey(KeyCode.K) && !espera)
         {
             animator.SetTrigger("AtaqueR");
-            RetrocesoAtaque(-50f);
+            RetrocesoAtaque(-250f);
             StartCoroutine(TiempoEspera(1f));
         }
     }
