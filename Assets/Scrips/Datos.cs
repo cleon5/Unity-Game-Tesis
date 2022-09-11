@@ -7,10 +7,10 @@ using System;
 public class Datos 
 {
     //Datos globales
-    public int Dinero = 1;
-    public int MesNumero = 1;
-    public string PuntoHistoria = "algo";
-    /*
+    public int Dinero ;
+    public int MesNumero ;
+    public string PuntoHistoria ;
+    
     public int Collecionables;
     public float ubicacionX;
 
@@ -53,14 +53,14 @@ public class Datos
     public int HotelDineroInv;
 
     //
-    */
+    /*
     public Datos()
     {
         Dinero = 1000;
         MesNumero = 1;
         PuntoHistoria = "oriana";
 
-    }
+    }*/
     
 
 }

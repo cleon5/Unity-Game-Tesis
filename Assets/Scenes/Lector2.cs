@@ -10,11 +10,6 @@ public class Lector2 : MonoBehaviour
 {
     [SerializeField]
     private TextAsset _InkJsonFile;
-    [SerializeField]
-    private TextAsset _InkJsonFileInicial;
-
-    [SerializeField]
-    private TextAsset _InkJsonFileComenzado;
 
     private Story _StoryScript;
 
@@ -26,75 +21,36 @@ public class Lector2 : MonoBehaviour
     private GridLayoutGroup choiceHolder;
     [SerializeField]
     private Button choiseBasePrefac;
-    private string nombreNivel;
+
 
     private int Porcentaje;
     public int contadorPorcentaje;
     private int Costo;
     private int PorcentajeNegocio;
 
-    //
     public GameObject Principal;
     public GameObject Secundario;
+
     private SpriteRenderer Psprite;
     private SpriteRenderer Ssprite;
 
-    private string[] escenas = { "Inicio", "Principal", "Intro", "Cafeteria", "Oriana", "Info", "Hotel", "Restaurante" };
-    private int mes;
 
     public Guardado guardar;
     public string Archivo;
-    public string Archivo2;
-    public string datas;
+
     void Start()
     {
         Psprite =  Principal.GetComponent<SpriteRenderer>();
         Ssprite = Secundario.GetComponent<SpriteRenderer>();
         Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
 
-        //progreso.MesNumero++;
-        //print(progreso.MesNumero++);
-        
-        // _InkJsonFile = _InkJsonFileInicial;
-        _InkJsonFile = _InkJsonFileInicial;
-        /*
-        switch (nombreNivel)
-        {
-            //Historia intro
-            case "Intro":
-                _InkJsonFile = _InkJsonFileInicial;
 
-                break;
-            //Historia Cafeteria
-            case "Cafeteria":
-                _InkJsonFile = _InkJsonFileInicial;
+        Archivo = PlayerPrefs.GetString("NombreEscena");
+        print(Archivo);
 
-                break;
-            //Historia Restaurante
-            case "Restaurante":
-                _InkJsonFile = _InkJsonFileInicial;
-
-                break;
-            //Historia Hotel
-            case "Hotel":
-                _InkJsonFile = _InkJsonFileInicial;
-
-                break;
-            //Historia Oriana
-            case "Oriana":
-                //progreso.PuntoHistoria = "a";
-                _InkJsonFile = _InkJsonFileInicial;
-                break;
-
-        }*/
-        //print(progreso.PuntoHistoria);
+        _InkJsonFile = Resources.Load<TextAsset>("Ink/Cafeteria");
         LoadStory();
     }
-    /*
-    private void OnLevelWasLoaded(int level)
-    {
-        nombreNivel = escenas[level];
-    }*/
 
     void Update()
     {
@@ -237,6 +193,6 @@ public class Lector2 : MonoBehaviour
     void Guardar()
     {
         //Archivo = ;
-        PlayerPrefs.SetString("00", JsonUtility.ToJson(progreso));
+        //PlayerPrefs.SetString("00", JsonUtility.ToJson(progreso));
     }
 }
