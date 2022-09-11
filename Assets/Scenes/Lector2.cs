@@ -33,26 +33,28 @@ public class Lector2 : MonoBehaviour
     private int Costo;
     private int PorcentajeNegocio;
 
+    //
+    public GameObject Principal;
+    public GameObject Secundario;
+    private SpriteRenderer Psprite;
+    private SpriteRenderer Ssprite;
+
     private string[] escenas = { "Inicio", "Principal", "Intro", "Cafeteria", "Oriana", "Info", "Hotel", "Restaurante" };
     private int mes;
 
-    //public Datos progreso;
+    public Guardado guardar;
     public string Archivo;
-
+    public string Archivo2;
+    public string datas;
     void Start()
     {
-        /*
-        Archivo = PlayerPrefs.GetString("x");
-        Debug.Log(Archivo);
-        //progreso = JsonUtility.FromJson<Datos>(Archivo);
-        if (!string.IsNullOrEmpty(Archivo))
-        {
-            progreso = JsonUtility.FromJson<Datos>(Archivo);
-        }
+        Psprite =  Principal.GetComponent<SpriteRenderer>();
+        Ssprite = Secundario.GetComponent<SpriteRenderer>();
+        Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
 
-        progreso.MesNumero++;
-        print(progreso.MesNumero++);
-        */
+        //progreso.MesNumero++;
+        //print(progreso.MesNumero++);
+        
         // _InkJsonFile = _InkJsonFileInicial;
         _InkJsonFile = _InkJsonFileInicial;
         /*
@@ -152,7 +154,7 @@ public class Lector2 : MonoBehaviour
                     progreso.HotelPorcentajeNegocio = PorcentajeNegocio;
                     break;
             }*/
-            Guardar();
+            //Guardar();
         }
 
     }
@@ -161,7 +163,7 @@ public class Lector2 : MonoBehaviour
         if (_StoryScript.canContinue)
         {
             //Guardar
-            Guardar();
+            //Guardar();
 
             string text = _StoryScript.Continue();
             text = text?.Trim();
@@ -173,9 +175,9 @@ public class Lector2 : MonoBehaviour
         }
         else
         {
-            Guardar();
+           // Guardar();
 
-            SceneManager.LoadScene("Principal");
+            SceneManager.LoadScene("SampleScene");
         }
     }
     public void DisplayChoices()
@@ -234,7 +236,7 @@ public class Lector2 : MonoBehaviour
     }
     void Guardar()
     {
-        //Archivo = JsonUtility.ToJson(progreso);
-        PlayerPrefs.SetString("x", Archivo);
+        //Archivo = ;
+        PlayerPrefs.SetString("00", JsonUtility.ToJson(progreso));
     }
 }

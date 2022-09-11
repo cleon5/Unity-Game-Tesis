@@ -45,14 +45,19 @@ public class ControladorScenas : MonoBehaviour
     }
     public void CambiarEscena(string nombre)
     {
+        string nameScena = gameObject.name;
+        Debug.Log(nameScena);
+        if (nameScena == "Restaurante")
+            SceneManager.LoadScene("SampleScene");
+        else
+            SceneManager.LoadScene("Restaurante");
         SceneManager.LoadScene(nombre);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        string nameScena = gameObject.name;
-        Debug.Log(nameScena);
-        SceneManager.LoadScene(nameScena);
+        
+        SceneManager.LoadScene("Restaurante");
     }
 
     public void Reiniciar()
