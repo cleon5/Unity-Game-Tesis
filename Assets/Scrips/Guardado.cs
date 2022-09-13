@@ -24,7 +24,7 @@ public class Guardado : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, name);
         string dataJson = File.ReadAllText(path);
         Datos DatosCargados = JsonUtility.FromJson<Datos>(dataJson);
-
+       
         //File.WriteAllText(path, dataJson);
         print(DatosCargados);
     }

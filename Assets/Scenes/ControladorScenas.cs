@@ -28,7 +28,8 @@ public class ControladorScenas : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        CambiarEscena("Restaurante");
+        if(other.gameObject.CompareTag("Player"))
+            CambiarEscena("Restaurante");
     }
 
 }

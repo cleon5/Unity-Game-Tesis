@@ -11,7 +11,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     Animator animator;
     Rigidbody2D rb2d;
-    
+    Guardado guardado = new Guardado();
     
     CircleCollider2D circleColider;
 
@@ -25,7 +25,7 @@ public class MovimientoPersonaje : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         circleColider = GetComponent<CircleCollider2D>();
 
-
+        guardado.load();
         escalaPositiva = transform.localScale;
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;
