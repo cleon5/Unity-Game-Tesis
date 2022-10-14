@@ -14,6 +14,7 @@ public class Enemigo : MonoBehaviour
     float rango_ataque = 4f;
     float distancia = 15f;
     float diferencia;
+    public ControladorUI Puntaje;
 
 
     public int vida = 3;
@@ -89,7 +90,9 @@ public class Enemigo : MonoBehaviour
             if (vida <= 0)
             {
                 Destroy(gameObject);
+                Puntaje.AgregarPuntaje(300);
             }
         }
     }
+    
 }

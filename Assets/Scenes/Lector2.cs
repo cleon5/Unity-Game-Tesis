@@ -38,6 +38,8 @@ public class Lector2 : MonoBehaviour
     public Guardado guardar;
     public string Archivo;
 
+    public ControladorUI puntaje;
+
     void Start()
     {
         Psprite =  Principal.GetComponent<SpriteRenderer>();
@@ -66,7 +68,7 @@ public class Lector2 : MonoBehaviour
         //Controlador de variables de Ink
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ChangeCharacterIcon(charName));
-        _StoryScript.BindExternalFunction("PorcentajeGanancia", (int porcentaje) => { Porcentaje = porcentaje; });
+        _StoryScript.BindExternalFunction("PorcentajeGanancia", (int porcentaje) => { Porcentaje = porcentaje; puntaje.AgregarPuntaje(porcentaje); });
         _StoryScript.BindExternalFunction("CostoInvercion", (int costo) => { Costo = costo; print(Costo); });
         _StoryScript.BindExternalFunction("PorcentajeNegocio", (int PNegocio) => { PorcentajeNegocio = PNegocio; print(PorcentajeNegocio); });
         _StoryScript.BindExternalFunction("Aceptado", (bool aceptado) => CalculoFinal(aceptado));

@@ -18,6 +18,8 @@ public class MovimientoPersonaje : MonoBehaviour
     Vector3 escalaPositiva;
     Vector3 escalaNegativa;
 
+    public ControladorUI Vida;
+
     bool espera;
     void Start()
     {
@@ -114,7 +116,9 @@ public class MovimientoPersonaje : MonoBehaviour
             animator.SetBool("Salto", false);
         }
         if (other.gameObject.CompareTag("Enemigo")){
+            Vida.QuitarVida(1);
             RetrocesoAtaque(20f);
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
