@@ -8,9 +8,12 @@ public class MovCamara : MonoBehaviour
     private Vector3 pos2;
     public GameObject personaje;
     private float desplazamientoY = .5f;
+    
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector3(personaje.transform.position.x, personaje.transform.position.y, -10);
+        
         posicion = transform.position - personaje.transform.position;
         pos2 = transform.position - personaje.transform.position;
     }

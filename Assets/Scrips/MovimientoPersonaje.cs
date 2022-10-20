@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    float velocidad = 12f;
+    float velocidad = 16f;
     bool saltando = false;
     float saltoPotencia = 550f;
     float vida = 10;
