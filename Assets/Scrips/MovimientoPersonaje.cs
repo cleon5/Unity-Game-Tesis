@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    float velocidad = 16f;
+    float velocidad = 18f;
     bool saltando = false;
-    float saltoPotencia = 550f;
+    float saltoPotencia = 500f;
     float vida = 10;
 
     Animator animator;
@@ -20,14 +20,30 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public ControladorUI Vida;
 
+    private float posX;
+    private float posY;
+
     bool espera;
     void Start()
     {
+        posX = PlayerPrefs.GetFloat("PosX");
+        posY = PlayerPrefs.GetFloat("PosY");
+
+        print(posX);
+        if(posX == 0)
+        {
+            //-193.6584, -2.4789
+            transform.position = new Vector2(-193.6584f, -2.4789f);
+        }
+        else
+        {
+            transform.position = new Vector2(posX, posY);
+        }
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         circleColider = GetComponent<CircleCollider2D>();
 
-        guardado.load();
+        //guardado.load();
         escalaPositiva = transform.localScale;
         escalaNegativa = escalaPositiva;
         escalaNegativa.x *= -1;
@@ -117,12 +133,18 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemigo")){
             Vida.QuitarVida(1);
+            vida = PlayerPrefs.GetInt("Vida");
             RetrocesoAtaque(20f);
-
+            if (vida <= 0)
+            {
+                animator.SetBool("Muerte", true);
+                Destroy(gameObject);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (collision.gameObject.CompareTag("Player"))
         {
             RetrocesoAtaque(20f);
@@ -132,6 +154,6 @@ public class MovimientoPersonaje : MonoBehaviour
                 animator.SetBool("Muerte", true);
                 Destroy(gameObject);
             }
-        }
+        }*/
     }
 }

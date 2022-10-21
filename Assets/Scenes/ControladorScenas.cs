@@ -15,6 +15,7 @@ public class ControladorScenas : MonoBehaviour
     }
     public void CambiarEscena(string nombre)
     {
+
         string nameScena = gameObject.name;
         Debug.Log(nameScena);
         if (nameScena == "Restaurante")
@@ -28,8 +29,14 @@ public class ControladorScenas : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&& Input.GetKey(KeyCode.X))
+        {
+            PlayerPrefs.SetFloat("PosX", transform.position.x);
+            PlayerPrefs.SetFloat("PosY", transform.position.y);
             CambiarEscena("Restaurante");
+        }
+            
+
     }
 
 }

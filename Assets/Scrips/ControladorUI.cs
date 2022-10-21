@@ -13,6 +13,8 @@ public class ControladorUI : MonoBehaviour
     void Start()
     {
         monedas = PlayerPrefs.GetInt("Monedas");
+        PlayerPrefs.SetInt("Vida", 10);
+        vida = PlayerPrefs.GetInt("Vida");
         Puntaje.text= "Monedas: "+monedas;
         Vida.text = "Vida: " + vida;
     }
@@ -32,17 +34,20 @@ public class ControladorUI : MonoBehaviour
     {
         monedas -= Monedas;
         Puntaje.text = "Monedas: " + monedas;
+        PlayerPrefs.SetInt("Monedas", monedas);
     }
 
     public void AgregarVida(int Monedas)
     {
         vida += Monedas;
         Vida.text = "Vida: " + vida;
+        PlayerPrefs.SetInt("Vida", vida);
     }
     public void QuitarVida(int Monedas)
     {
         vida -= Monedas;
         Vida.text = "Vida: " + vida;
+        PlayerPrefs.SetInt("Vida", vida);
     }
 
 }
