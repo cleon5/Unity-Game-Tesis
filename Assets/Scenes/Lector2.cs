@@ -50,7 +50,15 @@ public class Lector2 : MonoBehaviour
         Archivo = PlayerPrefs.GetString("NombreEscena");
         print(Archivo);
 
-        _InkJsonFile = Resources.Load<TextAsset>("Ink/Cafeteria");
+        switch (Archivo)
+        {
+            case "Gremio":
+                _InkJsonFile = Resources.Load<TextAsset>("ScripsInk/Gremio");
+                break;
+
+        }
+            
+
         LoadStory();
     }
 
