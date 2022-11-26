@@ -54,6 +54,19 @@ public class Lector2 : MonoBehaviour
         {
             case "Gremio":
                 _InkJsonFile = Resources.Load<TextAsset>("ScripsInk/Gremio");
+                Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
+                break;
+            case "MisionGwen":
+                _InkJsonFile = Resources.Load<TextAsset>("ScripsInk/MisionGwen");
+                Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
+                break;
+            case "MisionMenendez":
+                _InkJsonFile = Resources.Load<TextAsset>("ScripsInk/MisionMenendez");
+                Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
+                break;
+            case "Tienda":
+                _InkJsonFile = Resources.Load<TextAsset>("ScripsInk/Tienda");
+                Psprite.sprite = Resources.Load<Sprite>("Personajes/Oriana");
                 break;
 
         }
